@@ -1,6 +1,6 @@
 import sys, os
 from write_file import write_file
-from templates import get_tsx_file_content, get_css_file_content
+from templates import *
 
 # get cli arguments
 args = sys.argv[1::]
@@ -24,6 +24,9 @@ if __name__ == '__main__':
     
     css_file_path = os.path.join(component_folder_path, f"{name}.module.css")
     write_file(css_file_path, get_css_file_content(name))
+
+    index_file_path = os.path.join(component_folder_path, "index.ts")
+    write_file(index_file_path, get_index_file_content(name))
     
   except FileExistsError:
     print('This component is already exists')
